@@ -1,4 +1,4 @@
-name:  Compare Functions
+name: Compare Functions
 on: push
 jobs:
   compare:
@@ -7,5 +7,5 @@ jobs:
       - run: printenv | grep '_FUNC'
         env:
           CONTAINS_FUNC: ${{ contains('Hello', 'ell') }}
-          STARTS_WITH_FUNC: ${{ starts_with('Hello', 'He') }}
-          ENDS_WITH_FUNC: ${{ ends_with('Hello', 'lo') }}
+          STARTS_WITH_FUNC: ${{ startsWith('Hello', 'He') }}
+          ENDS_WITH_FUNC: ${{ endsWith('Hello', 'lo') }}
