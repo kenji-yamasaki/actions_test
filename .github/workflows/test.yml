@@ -10,4 +10,4 @@ jobs:
       - uses: actions/setup-ruby@v5
         with:
           ruby-version: '2.6.10'
-      - run: ruby rubyb/test/test_calc.rb
+      - run: ruby rubyb/test/*.rb
