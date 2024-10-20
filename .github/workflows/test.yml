@@ -1,0 +1,13 @@
+name: Test
+on: 
+  pull_request:
+    paths: ['ruby/**/*.rb']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-ruby@v5
+        with:
+          ruby-version: '2.6.10'
+      - run: ruby rubyb/test/test_calc.rb
