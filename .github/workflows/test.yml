@@ -11,4 +11,4 @@ jobs:
         with:
           ruby-version: '3.3'
           bundler-cache: true
-      - run: ruby rubyb/test/*.rb
+      - run: ruby ruby/test/*.rb
