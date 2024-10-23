@@ -11,5 +11,4 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-          cache: gradle
       - run: java java/test/*.java
