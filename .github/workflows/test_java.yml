@@ -1,0 +1,15 @@
+name: Test_java
+on: 
+  pull_request:
+    paths: ['java/**/*.java']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-java@v4
+        with:
+          distribution: Temurin
+          java-version: '21'
+          cache: gradle
+      - run: java java/test/*.java
