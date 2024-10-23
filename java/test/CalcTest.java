@@ -39,4 +39,5 @@ public class CalcTest {
         System.out.println("@Test(2)");
         assertEquals("even", calc.evenOrOdd(2));
     }
+}
     
