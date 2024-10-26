@@ -11,4 +11,11 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - run: java java/test/*.java
+          cache: maven
+      - name: Build with Maven
+        run: mvn --batchmode --update-snapshots package
+        working-directory: ./java
+#      - run: java java/test/*.java
+      - name: Test with Maven
+        run: mvn--batchmode test
+        working-directory: ./java/
