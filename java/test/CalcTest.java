@@ -1,3 +1,7 @@
+package java.test;
+
+import java.src.Calc;
+
 public class CalcTest {
     
     private Calc calc;

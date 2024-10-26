@@ -1,3 +1,5 @@
+package java.src;
+
 public class Calc {
     public String evenOrOdd(int num)
         if (num % 2 == 0) {
