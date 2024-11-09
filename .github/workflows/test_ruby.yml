@@ -1,4 +1,4 @@
-name: Test
+name: Test_ruby
 on: 
   pull_request:
     paths: ['ruby/**/*.rb']
@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-ruby@v5
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6.10'
-      - run: ruby rubyb/test/*.rb
+          ruby-version: '3.3'
+          bundler-cache: true
+      - run: ruby ruby/test/*.rb
