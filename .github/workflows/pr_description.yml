@@ -1,0 +1,16 @@
+name: PullRequest Description
+on: 
+  pull_request
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Edit Pull Request Description
+        run: |
+          DESCRIPTION=$(gh pr view ${{ github.event.pull_request.number }} --json body --jq .body)
+          gh pr edit ${{ github.event.pull_request.number }} --body  "://tickets/${{ github.event.pull_request.number }}
+          ---
+          ${DESCRIPTION}"
