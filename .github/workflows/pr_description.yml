@@ -5,7 +5,8 @@ jobs:
   print:
     runs-on: ubuntu-latest
     steps:
-      - description: |
+      - name: Edit Pull Request Description
+        run: |
         DESCRIPTION=$(gh pr view ${{ github.event.pull_request.number }} --json body --jq .body)
         gh pr edit ${{ github.event.pull_request.number }} --body  "://tickets/${{ github.event.pull_request.number }}
         ---
