@@ -1,6 +1,8 @@
 name: PullRequest Description
 on: 
   pull_request
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   print:
     runs-on: ubuntu-latest
