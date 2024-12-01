@@ -1,6 +1,6 @@
 name: PullRequest Description
 on: 
-  pull_request
+  pull_request:
     types: [ opened ]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
