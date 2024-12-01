@@ -11,6 +11,7 @@ jobs:
       - name: Edit Pull Request Description
         run: |
           DESCRIPTION=$(gh pr view ${{ github.event.pull_request.number }} --json body --jq .body)
-          gh pr edit ${{ github.event.pull_request.number }} --body  "://tickets/${{ github.event.pull_request.number }}
+          gh pr edit ${{ github.event.pull_request.number }} --body  "チケット
+          https://tickets.com/${{ github.event.pull_request.head.ref }}
           ---
           ${DESCRIPTION}"
