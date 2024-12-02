@@ -2,10 +2,6 @@ name: Pull Request Description
 on: 
   pull_request:
     types: [ opened ]
-    branches-ignore:
-      - 'main'
-    tags:
-      - '*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
