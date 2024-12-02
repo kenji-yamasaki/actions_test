@@ -1,4 +1,4 @@
-name: Test_java
+name: Test java
 on: 
   pull_request:
     paths: ['java/**/*.java']
