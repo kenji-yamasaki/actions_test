@@ -1,7 +1,11 @@
-name: PullRequest Description
+name: Pull Request Description
 on: 
   pull_request:
     types: [ opened ]
+    branches-ignore:
+      - 'main'
+    tags:
+      - '*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
@@ -12,7 +16,7 @@ jobs:
       - name: Edit Pull Request Description
         run: |
           DESCRIPTION=$(gh pr view ${{ github.event.pull_request.number }} --json body --jq .body)
-          gh pr edit ${{ github.event.pull_request.number }} --body  "チケット
-          https://tickets.com/${{ github.event.pull_request.head.ref }}
-          ---
-          ${DESCRIPTION}"
+          gh pr edit ${{ github.event.pull_request.number }} --body  "${DESCRIPTION}
+          
+          チケット
+          https://tickets.com/${{ github.event.pull_request.head.ref }}"
