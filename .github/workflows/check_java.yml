@@ -1,7 +1,8 @@
 name: Check Java
 on: 
-  pull_request:
-    paths: ['java/**/*.java']
+  push:
+#  pull_request:
+#    paths: ['java/**/*.java']
 jobs:
   test:
     runs-on: ubuntu-latest
