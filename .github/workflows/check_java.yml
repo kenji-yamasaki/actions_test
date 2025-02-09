@@ -1,6 +1,7 @@
 name: Check Java
 on: 
   push:
+#  pull_request:
     paths: ['java/**/*.java']
 jobs:
   test:
@@ -14,4 +15,4 @@ jobs:
           cache: maven
       - uses: pmd/pmd-github-action@v2
         with:
-          rulesets: 'ruleset.xml'
+          rulesets: 'java/ruleset.xml'

@@ -1,90 +1,455 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example</groupId>
-  <artifactId>junit_test</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+	<groupId>com.example</groupId>
+	<artifactId>junit_test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
-  <name>junit_test</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+	<name>junit_test</name>
+	<!-- FIXME change it to the project's website -->
+	<url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>17</maven.compiler.release>
+	</properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.11.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>5.11.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Optionally: parameterized tests support -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement><!-- lock down plugins versions to avoid using Maven
+			defaults (may be moved to parent pom) -->
+			<plugins>
+				<!-- clean lifecycle, see
+				https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.4.0</version>
+				</plugin>
+				<!-- default lifecycle, jar packaging: see
+				https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.3.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.13.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.3.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.4.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>3.1.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.1.2</version>
+				</plugin>
+				<!-- site lifecycle, see
+				https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.12.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>3.6.1</version>
+				</plugin>
+<!--
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-checkstyle-plugin</artifactId>
+  <version>3.0.0</version>
   <dependencies>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- Optionally: parameterized tests support -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+   <dependency>
+     <groupId>com.puppycrawl.tools</groupId>
+     <artifactId>checkstyle</artifactId>
+     <version>8.17</version>
+   </dependency>
+ </dependencies>
+ <configuration>
+   <configLocation>google_checks.xml</configLocation>
+   <failsOnError>true</failsOnError>
+   <failOnViolation>true</failOnViolation>
+   <violationSeverity>error</violationSeverity>
+   <consoleOutput>true</consoleOutput>
+ </configuration>
+ <executions>
+   <execution>
+     <id>checkstyle</id>
+     <phase>verify</phase>
+       <goals>
+         <goal>check</goal>
+       </goals>
+    </execution>
+  </executions>
+</plugin>
+-->
+  
         <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.4.0</version>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.13.0</version>
-        </plugin>
-        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.3.0</version>
+<!--
+          <version>3.0.0-M5</version>
+-->
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.4.2</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+<!--
+          <version>3.0.0-M5</version>
+-->
         </plugin>
         <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.2</version>
-        </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.12.1</version>
+<!--
+          <version>3.9.1</version>
+-->
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.6.1</version>
+<!--
+          <version>3.1.0</version>
+-->
         </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+        <plugin>
+          <groupId>io.spring.javaformat</groupId>
+          <artifactId>spring-javaformat-maven-plugin</artifactId>
+<!--
+          <version>0.0.24</version>
+-->
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+<!--
+          <version>3.13.0</version>
+-->
+        </plugin>
+        <plugin>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+<!--
+          <version>4.0.4</version>
+-->
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+<!--
+          <version>3.1.1</version>
+-->
+        </plugin>
+  
+  
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+<!--
+            <version>[8.32,)</version>
+-->
+          </dependency>
+          <dependency>
+            <groupId>io.spring.nohttp</groupId>
+            <artifactId>nohttp-checkstyle</artifactId>
+<!--
+            <version>[0.0.4.RELEASE,)</version>
+-->
+          </dependency>
+          <dependency>
+            <groupId>io.spring.javaformat</groupId>
+            <artifactId>spring-javaformat-checkstyle</artifactId>
+<!--
+            <version>[0.0.24,)</version>
+-->
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>nohttp-checkstyle-validation</id>
+            <phase>validate</phase>
+            <configuration>
+              <configLocation>src/checkstyle/nohttp-checkstyle.xml</configLocation>
+              <suppressionsLocation>src/checkstyle/nohttp-checkstyle-suppressions.xml</suppressionsLocation>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <sourceDirectories>${project.basedir}</sourceDirectories>
+              <includes>**/*</includes>
+              <excludes>**/.git/**/*,**/.idea/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class</excludes>
+              <failsOnError>false</failsOnError>
+              <failOnViolation>false</failOnViolation>
+            </configuration>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>javaformat-validation</id>
+            <phase>validate</phase>
+            <inherited>true</inherited>
+            <configuration>
+                <configLocation>io/spring/javaformat/checkstyle/checkstyle.xml</configLocation>
+                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                <failsOnError>false</failsOnError>
+                <failOnViolation>false</failOnViolation>
+            </configuration>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-descriptor</id>
+            <goals>
+              <goal>attach-descriptor</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+              <goal>cpd-check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+  
+
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>central</name>
+      <url>https://repo1.maven.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://repo.spring.io/snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>central</name>
+      <url>https://repo1.maven.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://repo.spring.io/snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>licenses</report>
+              <report>modules</report>
+              <report>dependencies</report>
+              <report>plugins</report>
+              <report>dependency-info</report>
+              <report>dependency-management</report>
+              <report>plugin-management</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <configuration>
+          <language>java</language>
+          <rulesets>
+            <ruleset>/category/java/bestpractices.xml</ruleset>
+            <ruleset>/category/java/codestyle.xml</ruleset>
+            <ruleset>/category/java/design.xml</ruleset>
+            <ruleset>/category/java/documentation.xml</ruleset>
+            <ruleset>/category/java/errorprone.xml</ruleset>
+            <ruleset>/category/java/multithreading.xml</ruleset>
+            <ruleset>/category/java/performance.xml</ruleset>
+            <ruleset>/category/java/security.xml</ruleset>
+          </rulesets>
+          <aggregate>true</aggregate>
+          <outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+          <targetDirectory>${project.build.directory}</targetDirectory>
+          <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+          <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+          <targetJdk>${maven.compiler.source}</targetJdk>
+          <failOnViolation>false</failOnViolation>
+          <verbose>true</verbose>
+          <format>html</format>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>pmd</report>
+              <report>cpd</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>src/checkstyle/google_checks.xml</configLocation>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <consoleOutput>false</consoleOutput>
+          <failOnViolation>false</failOnViolation>
+          <failsOnError>false</failsOnError>
+          <linkXRef>false</linkXRef>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>spotbugs</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+	
 </project>
